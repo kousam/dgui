@@ -1,19 +1,20 @@
 import time
 
-print('yoyoyoyoyyo\n')
-
-print('yoyoyoyoyyo\n')
-
+print('Hello\n')
+print('Going to sleep\n')
 
 time.sleep(1)
 
-print('slept')
+print('Slept 1 sec')
 
 time.sleep(1)
 
-print('slept')
-
+print('Slept 2 sec')
 
 time.sleep(1)
 
-print('slept')
+print('Slept 3 sec')
+
+time.sleep(1)
+
+print('Woke up')

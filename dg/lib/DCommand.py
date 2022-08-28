@@ -1,4 +1,5 @@
 from subprocess import run, Popen, PIPE, STDOUT, CalledProcessError
+import threading
 
 
 class DCommandMgr():
@@ -22,11 +23,18 @@ class DShellCommand(DCommand):
         
         self.cmd = '{} {}'.format(args['cmd'], ' '.join(args['cmd_args']))
         self.cwd = args['cwd'] if 'cwd' in args else None
-        
+    
     def run(self, logger):
+        self.logger = logger
+        t = threading.Thread(target=self.run_cmd)
+        t.start()
+    
+    def run_cmd(self):
         with Popen(self.cmd, cwd=self.cwd, shell=True, stdout=PIPE, bufsize=1, universal_newlines=True) as p:
-            for line in p.stdout:
-                logger.log(self.LOG_TITLE, line)
+            for line in iter(p.stdout.readline, ''):
+                if line != '' and line != '\n':
+                    self.logger.log(self.LOG_TITLE, line)
+                    
 
 
 class DScript():
