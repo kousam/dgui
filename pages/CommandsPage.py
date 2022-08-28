@@ -6,7 +6,7 @@ from dg.gui.DCore import DFrame, DNavPage
 from dg.gui.DMaterials import DBuildMaterials
 from dg.gui.DLayout import DGridLayout, DVBoxLayout, DFastGridLayout
 from dg.gui.DExtra import DShadow
-from dg.gui.DWidgets import DTopMenu
+from dg.gui.DWidgets import DTopMenu,DButton
 from dg.lib.DUtils import DColor
 
 
@@ -162,7 +162,7 @@ class DCommandsButtonFrame(DFrame):
         self.layout.addWidget(button)
             
         
-class DCommandsButton(QPushButton):
+class DCommandsButton(DButton):
     WIDTH = 200
     HEIGHT = 60
 
@@ -172,5 +172,5 @@ class DCommandsButton(QPushButton):
         self.setFont(QFont("Roboto", 14))
         self.setFixedSize(self.WIDTH, self.HEIGHT)
         self.setContentsMargins(10,10,10,10)
-        self.setGraphicsEffect(DShadow())
+
        

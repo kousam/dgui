@@ -1,6 +1,7 @@
 
+from ctypes import alignment
 from PyQt5.QtWidgets import QMainWindow, QLabel, QPushButton, QLineEdit, QLineEdit, QTextEdit, QStatusBar
-from PyQt5.QtGui import QFontDatabase, QFont, QTextCursor
+from PyQt5.QtGui import QFontDatabase, QFont, QTextCursor, QIcon
 from PyQt5.QtCore import Qt, QTimer, QPoint
 
 import time
@@ -9,7 +10,7 @@ import re
 
 
 from dg.gui.DCore import DFrame, DUIObject, DAlign
-from dg.gui.DExtra import DShadow
+from dg.gui.DExtra import DShadow, DShadowDark
 from dg.gui.DLayout import DHBoxLayout, DVBoxLayout,DStackedLayout
 
 
@@ -108,7 +109,7 @@ class DWindow(QMainWindow, DUIObject):
         for page in self.materials.pages:
             self.sidebar.addPageButton(page)
             
-        
+        self.logger.log('App', 'Hello')
         self.show()   
 
     def getGUI(self):
@@ -212,6 +213,8 @@ class DSideBar(DFrame):
 
         self.layout = DVBoxLayout()
         self.layout.setAlignment(Qt.AlignTop)
+        
+        self.setGraphicsEffect(DShadowDark())
 
         self.setLayout(self.layout)
         
@@ -439,7 +442,8 @@ class DRoundInputField(QLineEdit, DAlign):
 
 
 class DLogger(DFrame):
-    HEIGHT = 200
+    HEIGHT = 226
+    LOGGER_HEIGHT = 200
     
     def __init__(self, parent):
         super().__init__(parent)
@@ -449,26 +453,35 @@ class DLogger(DFrame):
     def build(self):
         super().build()
         
-        self.setObjectName('test')
-        
-        self.setFixedHeight(self.HEIGHT)
+        self.setObjectName('logger_frame')
         
         self.layout = DVBoxLayout()
-        self.layout.setAlignment(Qt.AlignCenter)
+        self.layout.setAlignment(Qt.AlignBottom)
         
-        self.log_textEdit = QTextEdit(self)
+        self.setLayout(self.layout)
+        self.setFixedHeight(self.HEIGHT)
+        
+        self.topbar = DLoggerTopbar(self)
+        self.topbar.build()
+        self.layout.addWidget(self.topbar)
+        
+        self.log_textEdit = QTextEdit()
         self.log_textEdit.setReadOnly(True)
         self.log_textEdit.setFont(QFont("Roboto", 12))
-        self.log_textEdit.setFixedHeight(self.HEIGHT)
-        self.log_textEdit.setFixedWidth(self.parent.width())
+        self.log_textEdit.setFixedHeight(self.LOGGER_HEIGHT)
+        #self.log_textEdit.setFixedWidth(self.parent.width())
         self.log_textEdit.setObjectName('logger')
+        
+        self.layout.addWidget(self.topbar)
+        self.layout.addWidget(self.log_textEdit)
         
         self._update_timer = QTimer()
         self._update_timer.timeout.connect(self.loop)
         self._update_timer.start(100) # milliseconds
         
-    def resizeEvent(self, event):
-        self.log_textEdit.setFixedWidth(self.parent.width())
+        #self.setGraphicsEffect(DShadowDark())
+        
+
         
     def log(self, sender, text):
         self.log_queue.append((sender, text.rstrip('\n')))
@@ -501,6 +514,42 @@ class DLogger(DFrame):
 
         sb = self.log_textEdit.verticalScrollBar()
         sb.setValue(sb.maximum())
+        
+        
+class DLoggerTopbar(DFrame):
+    def __init__(self, parent):
+        super().__init__(parent)
+        self.isMinimized = False
+        
+    def prepare(self):
+        super().prepare()
+        
+        
+        
+        self.layout = DHBoxLayout()
+        self.layout.alignCenter()
+        self.layout.setContentsMargins(10,0,0,0)
+        self.label = DLabel()
+        self.label.setText('Output')
+        self.label.setFontSize(12)
+        self.label.setObjectName('logger_label')
+        self.label.setFixedHeight(26)
+
+        
+    def build(self):
+        super().build()
+        
+        self.setFixedHeight(26)
+        
+        self.setLayout(self.layout)
+        self.layout.addStretch()
+        self.layout.addWidget(self.label, alignment=self.layout.LEFT)
+        self.layout.addStretch()
+
+
+        
+        
+    
 
 
 class DButton(QPushButton, DAlign):
@@ -509,7 +558,7 @@ class DButton(QPushButton, DAlign):
         DAlign.__init__(self)
         self.setObjectName('page_button')
         self.setFont(QFont("Roboto", 14))
-        self.setGraphicsEffect(DShadow())
+        self.setGraphicsEffect(DShadowDark())
         
     def setFontSize(self, size):
         self.setFont(QFont("Roboto", size))

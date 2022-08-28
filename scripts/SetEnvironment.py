@@ -19,6 +19,9 @@ class SetEnvironment(DScript):
         self.environment = args['environment']
         
     def run(self, logger):
+        super().run(logger, self.callback)
+        
+    def run_cmd(self, callback=None):
         order = {}
         lines = []
         
@@ -43,5 +46,8 @@ class SetEnvironment(DScript):
             for line in lines:
                 file.write(line)
                 
-        logger.log(self.LOG_TITLE, 'Environment set to "{}"'.format(self.environment))
-            
+        if callback:
+            callback()
+    
+    def callback(self):
+        self.logger.log(self.LOG_TITLE, 'Environment set to "{}"'.format(self.environment))

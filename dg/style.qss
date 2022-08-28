@@ -6,7 +6,7 @@ QMainWindow#window{
 }
 
 QFrame#main_frame{
-	background-color: rgba(24,22,26,255);
+	background-color: rgba(33,32,34,255);
     border: 1px solid rgba(0,0,0,255);
 	
 }
@@ -36,13 +36,15 @@ QPushButton#exit_button:hover{
 }
 
 QFrame#side_bar{
-	background-color: rgba(14,12,16,255);
+	background-color: rgba(26,25,27,255);
+	border-right: 1px solid rgba(16,15,17,255);
 }
 
 QPushButton#sidebar_home_button{
 	background-color: #22653A;
 	color: rgba(230,230,230,255);
 	border: none;
+	border-right: 1px solid rgba(16,15,17,255);
 }
 
 QPushButton#sidebar_home_button:hover{
@@ -51,14 +53,14 @@ QPushButton#sidebar_home_button:hover{
 }
 
 QPushButton#sidebar_button{
-	background-color: rgba(14,12,16,255);
-	color: rgba(200,200,200,255);
+	background-color: rgba(26,25,27,255);
 	border: none;
+	border-right: 1px solid rgba(16,15,17,255);
+	color: rgba(200,200,200,255);
 }
 
 QPushButton#sidebar_button:hover{
-	background-color: rgba(150,148,152,255);
-	color: rgba(20,20,20,255);
+	background-color: rgba(100,100,100,100);
 }
 
 QStatusBar#statusbar{
@@ -98,9 +100,10 @@ QPushButton#default_button:hover{
 
 
 QTextEdit#logger{
-	background-color: rgba(10,10,10,255);
+	background-color: rgba(16,15,17,255);
 	color: rgba(200,200,200,255);
-	border: 2px solid rgba(200,200,200,255);
+	border: none;
+	
 
 }
 
@@ -170,4 +173,21 @@ QPushButton#command_button:hover{
 QPushButton#command_button:pressed{
 	background-color: #22653A;
 	border: 2px solid rgba(20,20,20,255);
+}
+
+QPushButton#frame_minimaxmize_button{
+	background-color: rgba(0,0,0,0);
+	border: none;
+}
+QPushButton#frame_minimaxmize_button:hover{
+	background-color: rgba(100,100,100,100);
+}
+
+QFrame#logger_frame{
+	background-color: rgba(26,25,27,255);
+	border-top: 2px solid rgba(14,10,12,255);
+}
+
+QLabel#logger_label{
+	color: rgba(200,200,200,255);
 }

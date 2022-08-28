@@ -1,5 +1,5 @@
 from dg.lib.DCommand import DShellCommand
-import vagrant
+
 
 
 class VagrantUpCommand(DShellCommand):
@@ -11,6 +11,14 @@ class VagrantUpCommand(DShellCommand):
     def __init__(self):
         super().__init__(self.args)
         
+    def run(self, logger):
+        self.logger.log(self.LOG_TITLE, 'Running vagrant up')
+        
+        super().run(logger, self.callback)
+        
+    def callback(self):
+        self.logger.log(self.LOG_TITLE, 'Vagrant is up!')
+        
         
 class VagrantHaltCommand(DShellCommand):
     LOG_TITLE = 'VAGRANT'
@@ -20,6 +28,14 @@ class VagrantHaltCommand(DShellCommand):
     
     def __init__(self):
         super().__init__(self.args)
+        
+    def run(self, logger):
+        logger.log(self.LOG_TITLE, 'Running vagrant halt')
+        
+        super().run(logger, self.callback)
+        
+    def callback(self):
+        self.logger.log(self.LOG_TITLE, 'Vagrant halted')
         
         
 

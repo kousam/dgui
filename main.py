@@ -5,7 +5,7 @@ from dg.gui.DMaterials import DWindowBuildMaterials, DAppBuildMaterials
 
 
 TITLE = 'Code buddy'
-RECT = (150,150,1200,800)
+RECT = (150,150,1200,900)
 
 #Load stylesheet from qss
 qss="dg//style.qss"
