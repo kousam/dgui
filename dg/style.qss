@@ -1,0 +1,173 @@
+
+QMainWindow#window{
+	background-color: rgba(20,20,20,255);
+	
+
+}
+
+QFrame#main_frame{
+	background-color: rgba(24,22,26,255);
+    border: 1px solid rgba(0,0,0,255);
+	
+}
+
+QFrame#top_bar{
+	background-color: rgba(59,198,101,255);
+}
+
+
+QPushButton#topbar_button{
+	background-color: rgba(59,198,101,255);
+	border: none;
+}
+
+QPushButton#topbar_button:hover{
+	background-color: rgba(220,220,220,255);
+}
+
+
+QPushButton#exit_button{
+	background-color: rgba(196,63,33,255);
+	border: none;
+}
+
+QPushButton#exit_button:hover{
+	background-color: rgba(140,15,50,255);
+}
+
+QFrame#side_bar{
+	background-color: rgba(14,12,16,255);
+}
+
+QPushButton#sidebar_home_button{
+	background-color: #22653A;
+	color: rgba(230,230,230,255);
+	border: none;
+}
+
+QPushButton#sidebar_home_button:hover{
+	background-color: rgba(59,198,101,255);
+	color: rgba(20,20,20,255);
+}
+
+QPushButton#sidebar_button{
+	background-color: rgba(14,12,16,255);
+	color: rgba(200,200,200,255);
+	border: none;
+}
+
+QPushButton#sidebar_button:hover{
+	background-color: rgba(150,148,152,255);
+	color: rgba(20,20,20,255);
+}
+
+QStatusBar#statusbar{
+	background-color: rgba(0,0,0,255);
+}
+
+QPushButton#page_button{
+	background-color: #BDC3C4;
+	color: rgba(20,20,20,255);
+	border: none;
+	border-radius: 3px;
+}
+
+QPushButton#page_button:hover{
+	background-color: rgba(59,198,101,255);
+	color: rgba(20,20,20,255);
+	
+}
+
+QPushButton#page_button:pressed{
+	background-color: #22653A;
+
+	
+}
+
+QPushButton#default_button{
+	background-color: rgba(40,40,40,255);
+	color: rgba(220,220,220,255);
+	border: none;
+
+}
+
+QPushButton#default_button:hover{
+	background-color: rgba(196,93,33,255);
+	
+}
+
+
+QTextEdit#logger{
+	background-color: rgba(10,10,10,255);
+	color: rgba(200,200,200,255);
+	border: 2px solid rgba(200,200,200,255);
+
+}
+
+QFrame#test{
+	background-color: rgba(100,0,0,60);
+	border: 1px solid rgba(255,0,0,255);
+}
+
+
+QLineEdit#input_field{
+	color: rgba(200,200,200,255);
+	background-color: rgba(44,42,46,255);
+	border: none;
+	border-radius: 3px;
+}
+
+QLineEdit#input_field:hover{
+	background-color: rgba(64,62,66,255);
+}
+
+QLineEdit#input_field:focus{
+	color: rgba(240,240,240,255);
+	background-color: rgba(84,82,86,255);
+}
+
+
+QLineEdit#color_label{
+	color: rgba(20,20,20,255);
+	background-color: rgba(44,42,46,255);
+	border: none;
+	border-radius: 3px;
+}
+
+
+QLabel#page_Label_normal{
+	color: rgba(240,240,240,255);
+}
+
+
+
+QPushButton#top_menu_button{
+	background-color: #22653A;
+	color: rgba(230,230,230,255);
+	border: none;
+	border-bottom-left-radius: 6px;
+	border-bottom-right-radius: 6px;
+}
+
+QPushButton#top_menu_button:hover{
+	background-color: rgba(59,198,101,255);
+	color: rgba(20,20,20,255);
+}
+
+QPushButton#command_button{
+	background-color: #BDC3C4;
+	color: rgba(20,20,20,255);
+	border: none;
+	border-radius: 3px;
+}
+
+QPushButton#command_button:hover{
+	background-color: rgba(59,198,101,255);
+	color: rgba(20,20,20,255);
+	border: 2px solid rgba(200,200,200,255);
+}
+
+QPushButton#command_button:pressed{
+	background-color: #22653A;
+	border: 2px solid rgba(20,20,20,255);
+}
